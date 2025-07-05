@@ -6,15 +6,16 @@ type Props = {
 
 export default function NewForm({addAppointment}:Props){
     const [formValues, setFormValues] = useState({
-        time: "2025-06-01",
+        time: "2025-07-01",
         desc: "",
     })
 
     const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        addAppointment(formValues.time,formValues.desc)
+        
+        addAppointment(formValues.time,formValues.desc ? formValues.desc:"Default Appointment -- It is a secret")
         setFormValues({
-            time: "2025-06-01",
+            time: "2025-07-01",
             desc: "",
         })
     }

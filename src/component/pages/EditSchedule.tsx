@@ -1,6 +1,6 @@
-import Sidebar from "./Sidebar"
-import ItemList from "./ItemList"
-import type { Appointment } from "../types"
+import Sidebar from "../Sidebar"
+import ItemList from "../ItemList"
+import type { Appointment } from "../../types"
 
 type Props = {
     appointments: Array<Appointment>,

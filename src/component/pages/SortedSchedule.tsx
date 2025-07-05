@@ -1,5 +1,5 @@
-import type { Appointment } from "../types"
-import PlaneItem from "./PlaneItem"
+import type { Appointment } from "../../types"
+import PlaneItem from "../PlaneItem"
 
 type Props = {
     appointments: Array<Appointment>
@@ -10,7 +10,7 @@ export default function SortedSchedule({appointments}:Props) {
     
     return (  
         <div className="border border-primary rounded-4 p-2">
-            <h2 className="text-center">Sorted Schedule</h2>
+            <h2 className="text-center">Sorted By Date Schedule</h2>
             {sortedAppointments.map(s => (
                 <PlaneItem 
                     key={s.id} 
