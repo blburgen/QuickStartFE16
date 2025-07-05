@@ -56,14 +56,14 @@ export default function App() {
         <PageNavBar/>
       </div>
       <Routes>
-        <Route path="/" element={ 
+        <Route path="/QuickStartFE16/" element={ 
           <div className="d-flex flex-column m-2">
             <HomePage
               appointments = {appointments}
             /> 
           </div>
         } />
-        <Route path="/EditSchedule/" element={ 
+        <Route path="/QuickStartFE16/EditSchedule/" element={ 
           <div className="d-flex flex-column m-2">
             <EditSchedule
               appointments = {appointments}
@@ -72,14 +72,14 @@ export default function App() {
             />
           </div>
         } />
-        <Route path="/SortedSchedule" element={ 
+        <Route path="/QuickStartFE16/SortedSchedule" element={ 
           <div className="d-flex flex-column m-2">
             <SortedSchedule
               appointments = {appointments}
             />
           </div>  
         }/>
-        <Route path="/ReverseSortedSchedule" element={ 
+        <Route path="/QuickStartFE16/ReverseSortedSchedule" element={ 
           <div className="d-flex flex-column m-2">
             <ReverseSortedSchedule
               appointments = {appointments}
