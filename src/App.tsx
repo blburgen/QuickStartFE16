@@ -29,6 +29,19 @@ const TEST_APPOINTMENTS =[
 
 export default function App() {
   const [ appointments, setAppointments ] = useState<Appointment[]>(TEST_APPOINTMENTS)
+
+  const updateAppointment = (property:string, newValue:string, idToUpdate?: number) => {
+    if(idToUpdate === undefined){
+      return
+    }
+
+    setAppointments(currentAppointment => currentAppointment.map(appointment => (
+      appointment.id !== idToUpdate ? appointment: {
+        ...appointment,
+        [property]:newValue
+      }
+    )))
+  }
   
   return (
     <>
@@ -39,6 +52,7 @@ export default function App() {
         <EditSchedule
           appointments = {appointments}
           setAppointments = {setAppointments}
+          updateAppointment = {updateAppointment}
         />
       </div>
       <div className="d-flex flex-column">

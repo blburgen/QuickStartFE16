@@ -5,25 +5,13 @@ import type { Appointment } from "../types"
 type Props = {
     appointments: Array<Appointment>,
     setAppointments: (item : Array<Appointment>) => void,
+    updateAppointment: (property: string, value: string, id?: number) => void,
 }
 
-export default function EditSchedule({appointments, setAppointments}:Props) {
+export default function EditSchedule({appointments, setAppointments, updateAppointment}:Props) {
 
   const deleteAppointment = (idToDelete:number) => {
     setAppointments( appointments.filter(s=>s.id !== idToDelete))
-  }
-
-  const updateAppointment = (property:string, newValue:string, idToUpdate?: number) => {
-    if(idToUpdate === undefined){
-      return
-    }
-
-    setAppointments(currentAppointment => currentAppointment.map(appointment => (
-      appointment.id !== idToUpdate ? appointment: {
-        ...appointment,
-        [property]:newValue
-      }
-    )))
   }
 
   const addAppointment = (time: string, desc: string) => {
