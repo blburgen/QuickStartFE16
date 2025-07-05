@@ -2,7 +2,7 @@ import { useState, type ChangeEvent, type MouseEvent } from "react";
 import type { Appointment } from "../types";
 
 type Props = {
-    updateAppointment: (property: string, value: string, id?: number) => void,
+    updateAppointment: (time: string, desc: string, id?: string) => void,
     selectedAppointment?: Appointment,
     handleClose: () => void,
 }
@@ -22,8 +22,7 @@ export default function EditForm({updateAppointment, selectedAppointment, handle
     const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
-        updateAppointment("time", formValues.time, selectedAppointment?.id);
-        updateAppointment("desc", formValues.desc, selectedAppointment?.id);
+        updateAppointment(formValues.time, formValues.desc, selectedAppointment?.id);
 
         handleClose();
 

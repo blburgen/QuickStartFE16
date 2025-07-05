@@ -6,8 +6,8 @@ import DisplayItem from "./DisplayItem";
 
 type Props = {
     appointment: Appointment,
-    deleteAppointment: (id: number) => void,
-    updateAppointment: (property: string, value: string, id?: number) => void,
+    deleteAppointment: (id: string) => void,
+    updateAppointment: (newTime: string, newDesc: string, id?: string) => void,
 }
 
 export default function Item({appointment, deleteAppointment, updateAppointment}: Props){

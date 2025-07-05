@@ -3,8 +3,8 @@ import Item from "./Item";
 
 type Props = {
     appointments: Array<Appointment>,
-    deleteAppointment: (id: number) => void
-    updateAppointment: (property: string, value: string, id?: number) => void,
+    deleteAppointment: (id: string) => void
+    updateAppointment: (newTime: string, newDesc: string, id?: string) => void,
 }
 
 export default function ItemList({appointments, deleteAppointment, updateAppointment}: Props) {

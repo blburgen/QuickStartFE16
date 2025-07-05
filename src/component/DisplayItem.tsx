@@ -2,7 +2,7 @@ import type { Appointment } from "../types"
 
 type Props = {
     appointment: Appointment,
-    deleteAppointment: (id: number) => void,
+    deleteAppointment: (id: string) => void,
     setIsModalOpen: (result: boolean) => void,
 }
 

@@ -5,23 +5,38 @@ import type { Appointment } from "../../types"
 type Props = {
     appointments: Array<Appointment>,
     setAppointments: (item : Array<Appointment>) => void,
-    updateAppointment: (property: string, value: string, id?: number) => void,
+    updateAppointment: (newTime: string, newDesc: string, id?: string) => void,
 }
 
 export default function EditSchedule({appointments, setAppointments, updateAppointment}:Props) {
 
-  const deleteAppointment = (idToDelete:number) => {
-    setAppointments( appointments.filter(s=>s.id !== idToDelete))
+  const deleteAppointment = async (idToDelete:string) => {
+    const response = await fetch("https://6867de11d5933161d70a1d6b.mockapi.io/api/v1/schedule/" + idToDelete, {
+      method: "DELETE"
+    })
+
+    const newlyDeletedItem = await response.json()
+    setAppointments( appointments.filter(s=>s.id !== newlyDeletedItem.id))
   }
 
-  const addAppointment = (time: string, desc: string) => {
+  const addAppointment = async (time: string, desc: string) => {
     const newAppointment = {
-            id: appointments.length ? appointments[appointments.length - 1].id + 1 : 0,
+            id: appointments.length ? (Number(appointments[appointments.length - 1].id) + 1).toString() : "0",
             time: time,
             desc: desc,
-        }  
+        }
+    
+    const response = await fetch("https://6867de11d5933161d70a1d6b.mockapi.io/api/v1/schedule", {
+      method: "POST",
+      body: JSON.stringify(newAppointment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
 
-    setAppointments([...appointments, newAppointment])
+    const newlyCreatedItem = await response.json()
+
+    setAppointments([...appointments, newlyCreatedItem])
   }
   
   return (
